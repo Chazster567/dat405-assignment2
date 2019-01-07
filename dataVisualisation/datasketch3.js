@@ -4,6 +4,8 @@
 let apiKey = "064d7a3343bcac094e73276fe067a52b";
 //This variable will store the JSON weather data
 let music;
+let music2;
+let music3;
 let i;
 let input;
 let button;
@@ -16,9 +18,13 @@ function preload() {
   //The URL is formatted according to the documentation provided by the developers in:
   //http://api.openweathermap.org
   //The text/string object is formatted with the location we want to use, and our own API key
-  let url = "http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+artist+"&api_key=064d7a3343bcac094e73276fe067a52b&format=json";
+  let url = "http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+'eagles'+"&api_key=064d7a3343bcac094e73276fe067a52b&format=json";
+  let url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+'oasis'+"&api_key=064d7a3343bcac094e73276fe067a52b&format=json";
+  let url3 = "http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist="+'beatles'+"&api_key=064d7a3343bcac094e73276fe067a52b&format=json";
   //The URL is sent to the loadJSON that returns the data to the weather variable
   music = loadJSON(url);
+  music2 = loadJSON(url2);
+  music3 = loadJSON(url3);
 }
 
 function setup() {
@@ -29,14 +35,22 @@ function setup() {
   input = createInput();
   input.position(560, 350);
 
-  button = createButton('Submit');
-  button.position(620, 370);
+  button = createButton('Eagles');
+  button.position(10, 500);
+  button.mousePressed(query);
+
+  button = createButton('Beatles');
+  button.position(10, 520);
+  button.mousePressed(query);
+
+  button = createButton('Oasis');
+  button.position(10, 540);
   button.mousePressed(query);
   noLoop();
 }
 
 function query() {
-  artist = input.value();
+  music = music2
   console.log(artist);
 }
 
