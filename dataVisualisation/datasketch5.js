@@ -11,7 +11,8 @@ let i = []; //Variable used for random song generator
 let input; //Variable used for user inputs text box
 let button; //Button variable
 let artist = 'beatles'; //Default artist so screen is not blank on opening
-
+let txtY;
+let txtX;
 //The preload function is executed before initializing the code in setup
 function preload() { //Loads any related data or media files
   //The URL is formatted according to the documentation provided by the developers
@@ -42,9 +43,11 @@ function draw() {
     fill(0);
      //Generates random song number
     // orbiting
-    speed += dir*0.05;
+    speed += dir*0.002;
     posX = radiusX * cos(speed);
     posY = radiusY * sin(speed);
+    fill(255, 255, 0); //Sun colouring
+    ellipse(-300, 360, 950, 950); //Sun object creation
     translate(-200,height/2);
     fill(255);
     rectMode(CENTER);
@@ -52,12 +55,14 @@ function draw() {
     for (var n = 0; n < 5; n++){
       let planetSize = music.toptracks.track[i[n]].listeners/10000 + 10; //Variable to define planet size
       //ellipse(posX,posY,planetSize,planetSize);
-      fill(255)
+      fill(random(128,255))
       ellipse(posX, posY, planetSize, planetSize);
       textSize(12); //Sets size of text
       textAlign(CENTER); //Aligns text to center of object
-      text(music.toptracks.track[i[n]].name, 200, 375 + planetSize/2); //Places track name just below planet
-      text(music.toptracks.track[i[n]].listeners + ' plays', 200, 390 + planetSize/2); //Places play count just below track name
+      txtX = posX;
+      text(music.toptracks.track[i[n]].name, txtX, posY + planetSize/2); //Places track name just below planet
+      text(music.toptracks.track[i[n]].listeners + ' plays', txtX, posY + planetSize/2); //Places play count just below track name
       dir = -1
+      posX = posX + 150;
     }
 }
