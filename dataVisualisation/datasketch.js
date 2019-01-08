@@ -50,6 +50,6 @@ function draw() { //Calls draw function
     textAlign(CENTER); //Aligns text to center of object
     text(music.toptracks.track[i].name, x, 375 + planetSize/2); //Places track name just below planet
     text(music.toptracks.track[i].listeners + ' plays', x, 390 + planetSize/2); //Places play count just below track name
-    x = x + 100
+    x = x + 100 //x co-ordinate is increased by 100
   }
 }
