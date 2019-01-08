@@ -5,7 +5,7 @@ let music; //This variable stores the data from the API
 let i; //Variable used for random song generator
 let input; //Variable used for user inputs text box
 let button; //Button variable
-let artist = 'eagles'; //Default artist so screen is not blank on opening
+let artist = 'gorillaz'; //Default artist so screen is not blank on opening
 
 //The preload function is executed before initializing the code in setup
 function preload() { //Loads any related data or media files
@@ -21,10 +21,10 @@ function setup() { //Setup function
   createCanvas(1280, 720); //Creates work area
   background(0); //Black background
   input = createInput(); //Creates user input field
-  input.position(570, 350); //Positions field on screen
+  input.position(10, 350); //Positions field on screen
 
   button = createButton('Submit'); //Creates the submit button
-  button.position(620, 370); //Positions the submit button
+  button.position(10, 370); //Positions the submit button
   button.mousePressed(query); //Calls the query function
   noLoop(); //Tells the setup not to loop
 }
@@ -35,21 +35,26 @@ function query() { //Calls query function
 }
 
 function draw() { //Calls draw function
+  background(0);
   console.log(music.toptracks.track[0].listeners); //logs listening data of most popular track
   console.log(music.toptracks.track[0].name); //logs name of most popular track
 
   fill(255, 255, 0); //Sun colouring
-  ellipse(640, 360, 200, 200); //Sun object creation
+  ellipse(-300, 360, 950, 950); //Sun object creation
 
-  for (let x = 800; x <= width;) { //For loop which stops generating when x > width
+  for (let x = 350; x <= width;) { //For loop which stops generating when x > width
     i = round(random(40)) //Generates random song number
-    let planetSize = music.toptracks.track[i].listeners/10000 + 10; //Variable to define planet size
-    fill(random(120,255), random(120,255), random(120,255)); //Fills planet a random colour
-    ellipse(x, 360, planetSize, planetSize); //Planet object creation
-    textSize(12); //Sets size of text
-    textAlign(CENTER); //Aligns text to center of object
-    text(music.toptracks.track[i].name, x, 375 + planetSize/2); //Places track name just below planet
-    text(music.toptracks.track[i].listeners + ' plays', x, 390 + planetSize/2); //Places play count just below track name
-    x = x + 100 //x co-ordinate is increased by 100
+    let planetSize = music.toptracks.track[i].listeners/10000 + 20; //Variable to define planet size
+    console.log(music.toptracks.track[i].listeners) //logs listen count of random track
+      if (planetSize >= 60) { //If statement for max size
+        planetSize == 60; //Gives planets a max size
+      }
+      fill(random(120,255), random(120,255), random(120,255)); //Fills planet a random colour
+      ellipse(x, 360, planetSize, planetSize); //Planet object creation
+      textSize(12); //Sets size of text
+      textAlign(CENTER); //Aligns text to center of object
+      text(music.toptracks.track[i].name, x, 375 + planetSize/2); //Places track name just below planet
+      text(music.toptracks.track[i].listeners + ' plays', x, 390 + planetSize/2); //Places play count just below track name
+      x = x + 200 //x co-ordinate is increased by 100
   }
 }
