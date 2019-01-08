@@ -41,16 +41,16 @@ function setup() {
 
   button = createButton('Beatles');
   button.position(10, 520);
-  button.mousePressed(query);
+  button.mousePressed(query2);
 
   button = createButton('Oasis');
   button.position(10, 540);
-  button.mousePressed(query);
+  button.mousePressed(query3);
   noLoop();
 }
 
 function query() {
-  music = music2
+  music = url2
   console.log(artist);
 }
 

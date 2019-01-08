@@ -21,7 +21,7 @@ function setup() { //Setup function
   createCanvas(1280, 720); //Creates work area
   background(0); //Black background
   input = createInput(); //Creates user input field
-  input.position(560, 350); //Positions field on screen
+  input.position(570, 350); //Positions field on screen
 
   button = createButton('Submit'); //Creates the submit button
   button.position(620, 370); //Positions the submit button
@@ -29,27 +29,27 @@ function setup() { //Setup function
   noLoop(); //Tells the setup not to loop
 }
 
-function query() {
-  artist = input.value();
-  console.log(artist);
+function query() { //Calls query function
+  artist = input.value(); //Changes value of artist to value of input
+  console.log(artist); //logs value of artist
 }
 
-function draw() {
-  console.log(music.toptracks.track[0].listeners);
-  console.log(music.toptracks.track[0].name);
-  //Sun
-  fill(255, 255, 0);
-  ellipse(640, 360, 200, 200);
+function draw() { //Calls draw function
+  console.log(music.toptracks.track[0].listeners); //logs listening data of most popular track
+  console.log(music.toptracks.track[0].name); //logs name of most popular track
 
-  for (let x = 800; x <= width;) {
-    i = round(random(40))
-    let planetSize = music.toptracks.track[i].listeners/10000;
-    fill(random(120,255), random(120,255), random(120,255));
-    ellipse(x, 360, planetSize, planetSize);
-    textSize(12);
-    textAlign(CENTER);
-    text(music.toptracks.track[i].name, x, 375 + planetSize/2);
-    text(music.toptracks.track[i].listeners + ' plays', x, 390 + planetSize/2);
+  fill(255, 255, 0); //Sun colouring
+  ellipse(640, 360, 200, 200); //Sun object creation
+
+  for (let x = 800; x <= width;) { //For loop which stops generating when x > width
+    i = round(random(40)) //Generates random song number
+    let planetSize = music.toptracks.track[i].listeners/10000 + 10; //Variable to define planet size
+    fill(random(120,255), random(120,255), random(120,255)); //Fills planet a random colour
+    ellipse(x, 360, planetSize, planetSize); //Planet object creation
+    textSize(12); //Sets size of text
+    textAlign(CENTER); //Aligns text to center of object
+    text(music.toptracks.track[i].name, x, 375 + planetSize/2); //Places track name just below planet
+    text(music.toptracks.track[i].listeners + ' plays', x, 390 + planetSize/2); //Places play count just below track name
     x = x + 100
   }
 }
